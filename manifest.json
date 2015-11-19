@@ -1,21 +1,23 @@
 {
-	"author": "vixing",
-	"background": {
-		"scripts": ["bg.js"]
-	},
-	"browser_action": {
-		"default_icon": "icons/icon48.png",
-		"default_title": "Twitch Buffering Fix",
-		"default_popup": "popup.html"
-	},
-	"description": "Lets you switch Twitch server to avoid buffering.",
-	"icons": {
-		"16": "icons/icon16.png",
-		"48": "icons/icon48.png",
-		"128": "icons/icon128.png"
-	},
-	"manifest_version": 2,
-	"name": "Twitch Buffering Fix",
-	"permissions": ["contextMenus", "webRequest", "webRequestBlocking", "http://*.hls.ttvnw.net/*", "http://*.hls.twitch.tv/*"],
-	"version": "1.0.5"
+   "author": "vixing",
+   "background": {
+      "scripts": [ "bg.js" ]
+   },
+   "page_action": {
+      "default_icon": "icons/icon16.png",
+      "default_popup": "popup.html",
+      "default_title": "Twitch Server Selection"
+   },
+   "description": "Lets you switch Twitch server to avoid buffering.",
+   "icons": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhm34oix90B5DV7K6Cx4pJXKgSMUE8FY4icmCF+qvvGSTBhZHfZUql869DkHkRuvVyz+G7dwmgil8BA43oEao+qXHIWRr9khWHKJRXooo56Xx2C2iT0qhvgTn6LqghRtWZAqoOrxi7e0mCN5kZkrJ29p6sgLCbziC0Z6OhIkLDBmKy+Op/xdOfBfrzpSjbyVuH5iXazhnLOy3NsThiXOdKu963VxfznUZK3G8OMSbiBTP3IiEwOiH3xvX8KI2nwxzcSwe2REc2aQLenxC/+GBTQjlZIUjpSHchJ5etNgoGeKj9ibIrZwURFpA2CKt0CsZScCZGDi4cD66MrotEP5H7QIDAQAB",
+   "manifest_version": 2,
+   "name": "Twitch Server Selection",
+   "permissions": [ "storage", "declarativeContent", "webRequest", "webRequestBlocking", "http://*.hls.ttvnw.net/*", "http://*.hls.twitch.tv/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.6"
 }

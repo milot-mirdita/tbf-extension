@@ -1,6 +1,17 @@
-var simple = false;
+chrome.runtime.onInstalled.addListener(function() {
+	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+		chrome.declarativeContent.onPageChanged.addRules([{
+			conditions: [
+				new chrome.declarativeContent.PageStateMatcher({
+					pageUrl: { urlContains: 'twitch.tv' },
+				})
+			],
+			actions: [ new chrome.declarativeContent.ShowPageAction() ]
+		}]);
+	});
+});
 
-var using = 2;
+var using = 0;
 var search = /vid.*hls.*(\/hls.*.ts)/;
 
 var countries = {
@@ -41,6 +52,11 @@ var replacements = [
 	["CZ", "Prague", "video20.prg01.hls.ttvnw.net"]
 ];
 
+chrome.storage.sync.get("using", function(items) {
+	using = parseInt(items.using);
+	updateButton();
+});
+
 var per_country = {};
 for (var i = 0; i < replacements.length; i++) {
 	var country = replacements[i][0].replace(/^([a-zA-Z]+).*$/,"$1");
@@ -52,21 +68,14 @@ for (var i = 0; i < replacements.length; i++) {
 
 function updateButton() {
 	var cluster = replacements[using][0];
-	chrome.browserAction.setBadgeText({
+	/*chrome.browserAction.setBadgeText({
 		text: cluster.toString()
-	});
+	});*/
 }
 
 function changeServer(id) {
 	using = parseInt(id);
-	updateButton();
-}
-
-function click() {
-	if (using > replacements.length -2)
-		using = 0
-	else
-		using += 1;
+	chrome.storage.sync.set({"using" : using});
 	updateButton();
 }
 
@@ -100,27 +109,5 @@ function init() {
 
 	updateButton();
 }
-
-function resimple() {
-	if(simple) {
-		chrome.contextMenus.update("toggle", {"title":"Simple Mode"});
-		chrome.browserAction.setPopup({popup: "popup.html"});
-		simple = false;
-	}
-	else {
-		chrome.contextMenus.update("toggle", {"title":"List Mode"});
-		chrome.browserAction.setPopup({popup: ""});
-		simple = true;
-	}
-}
-
-chrome.contextMenus.create({
-	"id": "toggle",
-	"title": "Simple Mode",
-	"contexts": ["all"],
-	"onclick": resimple
-});
-
-chrome.browserAction.onClicked.addListener(click);
 
 init();

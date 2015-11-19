@@ -1,9 +1,9 @@
-Twitch Buffering Fix Extension repository
+# Twitch Buffering Fix Extension
 
-# Chrome web store:
-https://chrome.google.com/webstore/detail/twitch-buffering-fix/nnahmgokconolakhpdmgnmgaokhjcncb
+Minor usability improvements to the original extension at:
+https://github.com/vixing/tbf-extension from VixinG
 
-# Reddit post:
-https://www.reddit.com/r/Twitch/comments/3jjfc6/extension_twitch_buffering_fix/
-
-- Thanks to Swanty for the ideas and the latest version coding!
+## Changes
+* Uses page actions now to only be shown on twitch
+* Saves and syncs the selected server across sessions
+* Removed simple mode
